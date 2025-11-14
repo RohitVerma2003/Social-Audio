@@ -8,19 +8,22 @@ import {
   View,
 } from "react-native";
 
-const NameForm = () => {
+const UsernameForm = () => {
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder="First"/>
-      <TextInput style={styles.input} placeholder="last" />
-      <TouchableOpacity style={styles.button} activeOpacity={0.5} onPressOut={()=>router.push("/username")}>
+      <TextInput style={styles.input} placeholder="@Superboy" />
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.5}
+        onPressOut={() => router.replace("/(tabs)")}
+      >
         <Text style={styles.buttonText}>Let's Go</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default NameForm;
+export default UsernameForm;
 
 const styles = StyleSheet.create({
   container: {
@@ -43,12 +46,12 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 15,
     display: "flex",
-    alignSelf: "center"    
+    alignSelf: "center",
   },
   buttonText: {
     fontWeight: "bold",
     fontSize: 18,
     textAlign: "center",
-    color: "white"
+    color: "white",
   },
 });
