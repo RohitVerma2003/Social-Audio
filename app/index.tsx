@@ -4,9 +4,9 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Index() {
   return (
     <View style={styles.container}>
-      <View style={{marginBottom: 50}}>
+      <View style={{ marginBottom: 50 }}>
         <Text style={styles.heading}>What's your full name?</Text>
-        <Text style={{textAlign: "center"}}>People use real names on Club</Text>
+        <Text style={styles.subHeading}>People use real names on Club</Text>
       </View>
       <NameForm />
     </View>
@@ -21,7 +21,10 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 25,
-    fontWeight: "bold",
+    fontFamily: "Inter_900Black",
   },
-
+  subHeading: {
+    textAlign: "center",
+    fontFamily: "Inter_300Light",
+  },
 });

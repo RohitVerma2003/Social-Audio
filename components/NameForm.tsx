@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 20,
     borderRadius: 15,
-    fontWeight: "bold",
     fontSize: 15,
+    fontFamily: "Inter_700Bold"    
   },
   button: {
     backgroundColor: "#8BAE66",
@@ -46,9 +46,9 @@ const styles = StyleSheet.create({
     alignSelf: "center"    
   },
   buttonText: {
-    fontWeight: "bold",
     fontSize: 18,
     textAlign: "center",
-    color: "white"
+    color: "white",
+    fontFamily: "Inter_900Black"
   },
 });

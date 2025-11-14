@@ -10,7 +10,7 @@ const Username = () => {
       <View style={styles.container}>
         <View style={{ marginBottom: 50 }}>
           <Text style={styles.heading}>Pick a username</Text>
-          <Text style={{ textAlign: "center" }}>Choose a ditinct username</Text>
+          <Text style={styles.subHeading}>Choose a ditinct username</Text>
         </View>
         <UsernameForm />
       </View>
@@ -28,6 +28,10 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 25,
-    fontWeight: "bold",
+    fontFamily: "Inter_900Black"
+  },
+  subHeading: {
+    textAlign: "center",
+    fontFamily: "Inter_300Light",
   },
 });
