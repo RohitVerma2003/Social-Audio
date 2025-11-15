@@ -1,3 +1,4 @@
+import Card from "@/components/Card";
 import Header from "@/components/Header";
 import { Image } from "expo-image";
 import React from "react";
@@ -17,6 +18,8 @@ const Home = () => {
           <Text style={styles.welcomeHeading}>Room</Text>
         </View>
       </View>
+
+      <Card />
     </SafeAreaView>
   );
 };
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
     height: 180,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   welcomeHeading: {
     fontFamily: "Inter_500Medium",
@@ -50,6 +53,6 @@ const styles = StyleSheet.create({
     gap: 10,
     borderBottomWidth: 3,
     paddingHorizontal: 10,
-    borderColor: "#8BAE66"
+    borderColor: "#8BAE66",
   },
 });
