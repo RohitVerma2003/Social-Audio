@@ -9,7 +9,7 @@ const Card = ({ room }: { room: Room }) => {
   const images = room.userImages.map((img) => imageSources[img]);
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={[styles.container , {backgroundColor: room.bgColor}]}
       activeOpacity={0.5}
       onPress={() => router.push(`/room/${room.roomId}`)}
     >
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     width: "90%",
     height: 180,
     borderRadius: 25,
-    backgroundColor: "#BBDCE5",
     alignSelf: "center",
     padding: 12,
     paddingHorizontal: 18,

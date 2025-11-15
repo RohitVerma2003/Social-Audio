@@ -6,6 +6,7 @@ export type Room = {
   usersCount: number;
   commentCount: number;
   commentingUsers: string[];
+  bgColor: string;
 };
 
 export const imageSources: Record<string, any> = {
@@ -57,6 +58,7 @@ export const rooms: Room[] = [
     usersCount: 155,
     commentCount: 5,
     commentingUsers: ["Lena Marsh", "Minerva Spencer"],
+    bgColor: "#BBDCE5",
   },
   {
     roomId: "2",
@@ -72,6 +74,7 @@ export const rooms: Room[] = [
     usersCount: 49,
     commentCount: 12,
     commentingUsers: ["Jon Daniels", "Della Guerrero", "Blake Vega"],
+    bgColor: "#FBB4A5",
   },
   {
     roomId: "3",
@@ -81,5 +84,6 @@ export const rooms: Room[] = [
     usersCount: 15,
     commentCount: 2,
     commentingUsers: ["Christina Norton", "Justin Hart"],
+    bgColor: "#D7D3BF",
   },
 ];
