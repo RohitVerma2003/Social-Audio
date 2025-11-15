@@ -1,9 +1,14 @@
+import { RootState } from "@/redux/store";
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const { first_name, last_name } = useSelector(
+    (state: RootState) => state.user
+  );
   return (
     <View style={styles.container}>
       <View style={styles.leftHeader}>
@@ -13,10 +18,12 @@ const Header = () => {
         />
         <View>
           <Text style={styles.greetings}>Good Evening</Text>
-          <Text style={styles.name}>Rohit Verma</Text>
+          <Text style={styles.name}>
+            {first_name} {last_name}
+          </Text>
         </View>
       </View>
-      <Ionicons name="search-outline" size={20} style={styles.icon}/>
+      <Ionicons name="search-outline" size={20} style={styles.icon} />
     </View>
   );
 };
@@ -53,9 +60,9 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_900Black",
     fontSize: 20,
   },
-  icon:{
+  icon: {
     backgroundColor: "#1111",
     padding: 7,
-    borderRadius: 10
-  }
+    borderRadius: 10,
+  },
 });
