@@ -5,7 +5,7 @@ import { Entypo, Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
 
@@ -31,7 +31,7 @@ const RoomScreen = () => {
           </View>
           <View style={styles.callContainer}>
             {images.map((image, index) => (
-              <View style={{ position: "relative" }} key={index}>
+              <View key={index}>
                 <Image source={image} style={[styles.image]} />
                 <Ionicons name="mic-sharp" style={styles.mic} size={20} />
               </View>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   image: {
-    width: "25%",
+    width: Platform.OS === "android" ? "25%" : "100%",
     height: 100,
     aspectRatio: 1,
     maxWidth: 90,

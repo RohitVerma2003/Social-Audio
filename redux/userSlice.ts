@@ -7,8 +7,8 @@ type User = {
 };
 
 const initialState: User = {
-  first_name: "Rohit",
-  last_name: "Verma",
+  first_name: "Marian",
+  last_name: "Marsh",
   username: "",
 };
 

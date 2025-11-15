@@ -4,7 +4,7 @@ import { PlatformPressable } from "@react-navigation/elements";
 import { useLinkBuilder } from "@react-navigation/native";
 import { Tabs } from "expo-router";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 
 function CustomTabBar({ state, navigation }: BottomTabBarProps) {
   const { buildHref } = useLinkBuilder();
@@ -68,7 +68,7 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
   tabbar: {
-    bottom: 40,
+    bottom: Platform.OS === "android"? 40: 5,
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
