@@ -68,11 +68,13 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
   tabbar: {
-    position: "absolute",
-    bottom: 50,
+    bottom: 40,
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+    backgroundColor: "#fff",
+    height: 50,
+    alignItems: "center"
   },
   tabItem: {
     flex: 1,

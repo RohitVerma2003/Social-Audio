@@ -1,22 +1,18 @@
+import { imageSources, Room } from "@/constants/card";
 import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Card = () => {
-  const images = [
-    require("../assets/icons/person1.png"),
-    require("../assets/icons/person2.png"),
-    require("../assets/icons/person3.png"),
-    require("../assets/icons/person4.png"),
-    require("../assets/icons/person5.png"),
-  ];
+const Card = ({ room }: { room: Room }) => {
+  const imageBaseUrl = "../assets/icons/";
+  const images = room.userImages.map((img) => imageSources[img]);
   return (
     <TouchableOpacity style={styles.container} activeOpacity={0.5}>
       <View style={styles.headerContent}>
         <View>
-          <Text style={styles.greetings}>NEWS NEWS</Text>
-          <Text style={styles.name}>3 Minute News</Text>
+          <Text style={styles.greetings}>{room.heading}</Text>
+          <Text style={styles.name}>{room.title}</Text>
         </View>
         <Entypo name="dots-three-horizontal" style={styles.icon} size={18} />
       </View>
@@ -24,33 +20,31 @@ const Card = () => {
         <View style={styles.footerLeft}>
           <View style={styles.usersContainer}>
             {images.map((image, index) => (
-                <Image source={image} style={[styles.image , {left: (index * 25), zIndex: -index}]} key={index}/>
+              <Image
+                source={image}
+                style={[styles.image, { left: index * 25, zIndex: -index }]}
+                key={index}
+              />
             ))}
           </View>
           <View style={{ flexDirection: "row", gap: 10 }}>
             <View style={styles.footerData}>
               <Ionicons name="person" size={15} />
-              <Text style={styles.footerDataText}>155</Text>
+              <Text style={styles.footerDataText}>{room.usersCount}</Text>
             </View>
             <View style={styles.footerData}>
               <FontAwesome name="comment" size={15} />
-              <Text style={styles.footerDataText}>5</Text>
+              <Text style={styles.footerDataText}>{room.commentCount}</Text>
             </View>
           </View>
         </View>
         <View>
-          <View style={styles.footerRightData}>
-            <Text style={styles.footerRightDataText}>Lena Marsh</Text>
-            <FontAwesome name="commenting-o" size={15} />
-          </View>
-          <View style={styles.footerRightData}>
-            <Text style={styles.footerRightDataText}>Lena Marsh</Text>
-            <FontAwesome name="commenting-o" size={15} />
-          </View>
-          <View style={styles.footerRightData}>
-            <Text style={styles.footerRightDataText}>Lena Marsh</Text>
-            <FontAwesome name="commenting-o" size={15} />
-          </View>
+          {room.commentingUsers.map((user, index) => (
+            <View style={styles.footerRightData} key={index}>
+              <Text style={styles.footerRightDataText}>{user}</Text>
+              <FontAwesome name="commenting-o" size={15} />
+            </View>
+          ))}
         </View>
       </View>
     </TouchableOpacity>
@@ -68,6 +62,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     padding: 12,
     paddingHorizontal: 18,
+    marginBottom: 10
   },
   greetings: {
     fontFamily: "Inter_500Medium",
@@ -96,7 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    marginTop: 10
+    marginTop: 10,
   },
   footerData: {
     backgroundColor: "white",
@@ -119,7 +114,7 @@ const styles = StyleSheet.create({
   },
   footerRightData: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     gap: 5,
     flexDirection: "row",
@@ -142,6 +137,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "white",
     position: "absolute",
-    left: 0
+    left: 0,
   },
 });

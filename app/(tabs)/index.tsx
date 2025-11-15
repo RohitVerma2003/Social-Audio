@@ -1,25 +1,32 @@
 import Card from "@/components/Card";
 import Header from "@/components/Header";
+import { rooms } from "@/constants/card";
 import { Image } from "expo-image";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Home = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <Header />
-      <View style={styles.welcomeScreen}>
-        <View style={styles.content}>
-          <Image
-            source={require("../../assets/icons/house.png")}
-            style={styles.image}
-          />
-          <Text style={styles.welcomeHeading}>Room</Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.welcomeScreen}>
+          <View style={styles.content}>
+            <Image
+              source={require("../../assets/icons/house.png")}
+              style={styles.image}
+            />
+            <Text style={styles.welcomeHeading}>Room</Text>
+          </View>
         </View>
-      </View>
 
-      <Card />
+        <View>
+          {rooms.map((room) => (
+            <Card key={room.roomId} room={room} />
+          ))}
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
