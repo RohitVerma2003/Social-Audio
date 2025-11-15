@@ -1,12 +1,14 @@
 import Card from "@/components/Card";
 import Header from "@/components/Header";
-import { rooms } from "@/constants/card";
+import { RootState } from "@/redux/store";
 import { Image } from "expo-image";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const rooms = useSelector((state: RootState) => state.rooms.rooms);
   return (
     <SafeAreaView style={styles.safeArea}>
       <Header />

@@ -1,15 +1,17 @@
 import Header from "@/components/Header";
-import { imageSources, roomData } from "@/constants/card";
+import { imageSources } from "@/constants/card";
+import { RootState } from "@/redux/store";
 import { Entypo, Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector } from "react-redux";
 
 const RoomScreen = () => {
   const { roomId } = useLocalSearchParams<{ roomId: string }>();
-  const room = roomData[roomId];
+  const room = useSelector((state: RootState) => state.rooms.roomsData[roomId]);
   const images = room.userImages.map((img) => imageSources[img]);
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -29,9 +31,9 @@ const RoomScreen = () => {
           </View>
           <View style={styles.callContainer}>
             {images.map((image, index) => (
-              <View style={{position: "relative"}}>
-                <Image source={image} style={[styles.image]} key={index} />
-                <Ionicons name="mic-sharp" style={styles.mic} size={20}/>
+              <View style={{ position: "relative" }} key={index}>
+                <Image source={image} style={[styles.image]} />
+                <Ionicons name="mic-sharp" style={styles.mic} size={20} />
               </View>
             ))}
           </View>
@@ -93,6 +95,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     bottom: 0,
     right: 0,
-    elevation: 5
+    elevation: 5,
   },
 });
