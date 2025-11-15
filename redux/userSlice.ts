@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 type User = {
   first_name: string;
   last_name: string;
+  username: string;
 };
 
 const initialState: User = {
   first_name: "Rohit",
   last_name: "Verma",
+  username: "",
 };
 
 export const userSlice = createSlice({
@@ -20,8 +22,12 @@ export const userSlice = createSlice({
       if (firstName) state.first_name = firstName;
       if (lastName) state.last_name = lastName;
     },
+    updateUsername: (state, action) => {
+      const { username = "" } = action.payload;
+      if (username) state.username = username;
+    },
   },
 });
 
-export const { updateName } = userSlice.actions;
+export const { updateName, updateUsername } = userSlice.actions;
 export default userSlice.reducer;

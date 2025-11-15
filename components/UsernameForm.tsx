@@ -1,5 +1,6 @@
+import { updateUsername } from "@/redux/userSlice";
 import { router } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,15 +8,27 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useDispatch } from "react-redux";
 
 const UsernameForm = () => {
+  const [username, setUsername] = useState<string>("");
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch(updateUsername({ username }));
+    router.replace("/(tabs)");
+  };
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder="@Superboy" />
+      <TextInput
+        style={styles.input}
+        placeholder="@Superboy"
+        onChangeText={(text) => setUsername(text)}
+      />
       <TouchableOpacity
         style={styles.button}
         activeOpacity={0.5}
-        onPressOut={() => router.replace("/(tabs)")}
+        onPressOut={handleSubmit}
       >
         <Text style={styles.buttonText}>Let's Go</Text>
       </TouchableOpacity>
@@ -37,7 +50,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 15,
     fontSize: 15,
-    fontFamily: "Inter_700Bold"
+    fontFamily: "Inter_700Bold",
   },
   button: {
     backgroundColor: "#8BAE66",
