@@ -46,8 +46,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   greetings: {
-    fontFamily: "Inter_400Medium",
-    fontSize: 13,
+    fontFamily: "Inter_500Medium",
     color: "#727D73",
   },
   name: {
