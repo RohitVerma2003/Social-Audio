@@ -17,6 +17,37 @@ export const imageSources: Record<string, any> = {
   "person6.png": require("../assets/icons/person6.png"),
 };
 
+export const roomData: Record<
+  string,
+  {
+    heading: string;
+    title: string;
+    userImages: string[];
+  }
+> = {
+  "1": {
+    heading: "NEWS NEWS",
+    title: "3 Minute News",
+    userImages: ["person1.png", "person2.png", "person3.png"],
+  },
+  "2": {
+    heading: "BUSINESS ENTREPRENEURSHIP",
+    title: "Live Mastermind",
+    userImages: [
+      "person1.png",
+      "person2.png",
+      "person3.png",
+      "person4.png",
+      "person5.png",
+    ],
+  },
+  "3": {
+    heading: " TED OFFICIAL",
+    title: "Baajaveri Hedhunu",
+    userImages: ["person1.png", "person2.png", "person3.png"],
+  },
+};
+
 export const rooms: Room[] = [
   {
     roomId: "1",

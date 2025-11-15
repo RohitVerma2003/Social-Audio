@@ -1,14 +1,18 @@
 import { imageSources, Room } from "@/constants/card";
 import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
+import { router } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const Card = ({ room }: { room: Room }) => {
-  const imageBaseUrl = "../assets/icons/";
   const images = room.userImages.map((img) => imageSources[img]);
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.5}>
+    <TouchableOpacity
+      style={styles.container}
+      activeOpacity={0.5}
+      onPress={() => router.push(`/room/${room.roomId}`)}
+    >
       <View style={styles.headerContent}>
         <View>
           <Text style={styles.greetings}>{room.heading}</Text>
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     padding: 12,
     paddingHorizontal: 18,
-    marginBottom: 10
+    marginBottom: 10,
   },
   greetings: {
     fontFamily: "Inter_500Medium",
